@@ -166,17 +166,14 @@ get_mouse_block_and_position :: proc(is_fullscreen: bool, x: f32, y: f32) -> (in
 // }
 
 get_tile_selector_position_b :: proc(is_fullscreen: bool, x: f32, y: f32) -> (i32, i32) {
-	pos_x: i32
-	pos_y: i32
-	scale: i32 = 1
-	if is_fullscreen do scale = 4
+	scale: i32 = 4 if is_fullscreen else 1
 
 	for i: i32 = 0; i < 640; i += 16 {
 		for j: i32 = 0; j < 360; j += 16 {
 			if x >= f32(i * scale) &&
 			   x < f32((i + 16) * scale) &&
 			   y >= f32(j * scale) &&
-			   y < f32((j + 16) * scale) { 	// start here -------------
+			   y < f32((j + 16) * scale) {
 				return (i - 2), (j - 2)
 			}
 		}
