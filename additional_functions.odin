@@ -2504,17 +2504,19 @@ get_tile_selector_position :: proc(is_fullscreen: bool, x: f32, y: f32) -> (i32,
 	   y >= f32(176 * scale) &&
 	   y < f32(192 * scale) {
 		return 526, 174
-	} else if x >= f32(544 * scale) &&
-	   x < f32(560 * scale) &&
-	   y >= f32(176 * scale) &&
-	   y < f32(192 * scale) {
-		return 542, 174
-	} else if x >= f32(560 * scale) &&
-	   x < f32(576 * scale) &&
-	   y >= f32(176 * scale) &&
-	   y < f32(192 * scale) {
-		return 558, 174
 	}
+	// } else if x >= f32(544 * scale) &&
+	//    x < f32(560 * scale) &&
+	//    y >= f32(176 * scale) &&
+	//    y < f32(192 * scale) {
+	// 	return 542, 174
+	// }
+	// } else if x >= f32(560 * scale) &&
+	//    x < f32(576 * scale) &&
+	//    y >= f32(176 * scale) &&
+	//    y < f32(192 * scale) {
+	// 	return 558, 174
+	// }
 	// } else if x >= f32(576 * scale) &&
 	//    x < f32(592 * scale) &&
 	//    y >= f32(176 * scale) &&
