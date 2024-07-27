@@ -165,6 +165,7 @@ get_mouse_block_and_position :: proc(is_fullscreen: bool, x: f32, y: f32) -> (in
 // 	return
 // }
 
+// WOW This is so much more sane LOL
 get_tile_selector_position_b :: proc(is_fullscreen: bool, x: f32, y: f32) -> (i32, i32) {
 	scale: i32 = 4 if is_fullscreen else 1
 
