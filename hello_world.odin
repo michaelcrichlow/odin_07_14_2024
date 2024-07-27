@@ -1831,7 +1831,7 @@ main :: proc() {
 		// *---------------
 		mouse_position_00: rl.Vector2
 		mouse_position_00 = rl.GetMousePosition()
-		tile_pos_x, tile_pos_y = get_tile_selector_position(
+		tile_pos_x, tile_pos_y = get_tile_selector_position_b(
 			is_fullscreen,
 			mouse_position_00.x,
 			mouse_position_00.y,

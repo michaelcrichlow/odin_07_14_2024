@@ -1,6 +1,23 @@
 package game
 import rl "vendor:raylib"
 
+get_mouse_block_and_position_b :: proc(
+	is_fullscreen: bool,
+	x: f32,
+	y: f32,
+) -> (
+	block: int,
+	position: rl.Vector2,
+) {
+	scale := 4 if is_fullscreen else 1
+
+	if y >= f32(0 * scale) && y < f32(16 * scale) && x < f32(320 * scale) {
+		block = 1 + int(x / f32(scale * 16))
+		position.x = f32(block - 1) * 16
+	}
+	return
+}
+
 get_mouse_block_and_position :: proc(is_fullscreen: bool, x: f32, y: f32) -> (int, rl.Vector2) {
 	block := 0
 	position: rl.Vector2
@@ -129,6 +146,42 @@ get_mouse_block_and_position :: proc(is_fullscreen: bool, x: f32, y: f32) -> (in
 
 	return block, position
 
+}
+
+// get_mouse_block_and_position_b :: proc(
+// 	is_fullscreen: bool,
+// 	x: f32,
+// 	y: f32,
+// ) -> (
+// 	block: int,
+// 	position: rl.Vector2,
+// ) {
+// 	scale := 4 if is_fullscreen else 1
+
+// 	if y >= f32(0 * scale) && y < f32(16 * scale) && x < f32(320 * scale) {
+// 		block = 1 + int(x / f32(scale * 16))
+// 		position.x = f32(block - 1) * 16
+// 	}
+// 	return
+// }
+
+get_tile_selector_position_b :: proc(is_fullscreen: bool, x: f32, y: f32) -> (i32, i32) {
+	pos_x: i32
+	pos_y: i32
+	scale: i32 = 1
+	if is_fullscreen do scale = 4
+
+	for i: i32 = 0; i < 640; i += 16 {
+		for j: i32 = 0; j < 360; j += 16 {
+			if x >= f32(i * scale) &&
+			   x < f32((i + 16) * scale) &&
+			   y >= f32(j * scale) &&
+			   y < f32((j + 16) * scale) { 	// start here -------------
+				return (i - 2), (j - 2)
+			}
+		}
+	}
+	return 0, 0
 }
 
 get_tile_selector_position :: proc(is_fullscreen: bool, x: f32, y: f32) -> (i32, i32) {
